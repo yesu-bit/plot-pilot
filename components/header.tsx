@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { createSupabaseClient } from "@/utils/supabase/server";
 
 export default async function Header() {
@@ -11,18 +10,18 @@ export default async function Header() {
   return (
     <nav className="border-b w-full h-16 shrink-0 flex items-center">
       <div className="px-6 w-full flex items-center justify-between mx-auto">
-        <Link href="/" className="text-sm font-medium">
-          Next.js + Update Starter Template
+        <Link href="/" className="text-md font-medium">
+          PlotPilot
         </Link>
         <div className="flex items-center gap-2">
           {user == null && (
             <>
-              <Button variant="outline" asChild>
+              <button>
                 <Link href="/sign-in">Sign In</Link>
-              </Button>
-              <Button asChild>
+              </button>
+              <button>
                 <Link href="/sign-up">Sign Up</Link>
-              </Button>
+              </button>
             </>
           )}
         </div>

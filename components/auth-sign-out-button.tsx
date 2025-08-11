@@ -1,7 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
 import { createSupabaseClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -19,15 +17,15 @@ export default function AuthPageSignOutButton() {
   }
 
   return (
-    <Button onClick={signOut} disabled={isSigningOut}>
+    <button onClick={signOut} disabled={isSigningOut}>
       <div className="flex items-center">
-        <Spinner
+        {/* <Spinner
           variant="primary"
           isLoading={isSigningOut}
           className="mr-[8px]"
-        />
+        /> */}
         {isSigningOut ? "Signing Out..." : "Sign Out"}
       </div>
-    </Button>
+    </button>
   );
 }
