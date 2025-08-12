@@ -1,9 +1,9 @@
-import { signInAction } from "@/app/actions";
-import AuthSubmitButton from "@/components/auth-submit-button";
-import { FormMessage, Message } from "@/components/form-message";
+import { signUpAction } from "@/src/app/actions";
+import AuthSubmitButton from "@/src/components/auth-submit-button";
+import { FormMessage, Message } from "@/src/components/form-message";
 import Link from "next/link";
 
-export default async function SignIn(props: {
+export default async function SignUp(props: {
   searchParams: Promise<Message>;
 }) {
   const searchParams = await props.searchParams;
@@ -11,13 +11,13 @@ export default async function SignIn(props: {
   return (
     <form
       className="flex-1 flex flex-col w-full max-w-sm mx-auto mt-24"
-      action={signInAction}
+      action={signUpAction}
     >
-      <h1 className="text-2xl font-medium">Sign in</h1>
+      <h1 className="text-2xl font-medium">Sign up</h1>
       <p className="text-sm text-foreground">
-        Don&apos;t have an account?{" "}
-        <Link className="text-foreground font-medium underline" href="/sign-up">
-          Sign up
+        Already have an account?{" "}
+        <Link className="text-foreground font-medium underline" href="/sign-in">
+          Sign in
         </Link>
       </p>
       <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">

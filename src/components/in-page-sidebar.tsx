@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/utils/styles";
+// import { cn } from "@/utils/styles";
 
 type Item = {
   label: string;
@@ -59,18 +59,18 @@ function SidebarLink({
     <>
       <Link
         href={href}
-        onClick={e => {
+        onClick={(e) => {
           if (isDisabled) {
             e.preventDefault();
             return;
           }
         }}
-        className={cn(
-          "p-2 py-3 rounded-md text-sm text-gray-500 hover:text-foreground transition-colors",
-          isActive &&
-            "bg-accent text-foreground font-medium hover:text-foreground",
-          isDisabled && "text-gray-600 cursor-not-allowed hover:text-gray-700"
-        )}
+        // className={cn(
+        //   "p-2 py-3 rounded-md text-sm text-gray-500 hover:text-foreground transition-colors",
+        //   isActive &&
+        //     "bg-accent text-foreground font-medium hover:text-foreground",
+        //   isDisabled && "text-gray-600 cursor-not-allowed hover:text-gray-700"
+        // )}
       >
         <div className="flex items-center gap-2">
           <div className="leading-none">{label}</div>
