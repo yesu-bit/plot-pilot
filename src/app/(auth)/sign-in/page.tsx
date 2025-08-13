@@ -1,12 +1,23 @@
 import { signInAction } from "@/src/app/actions";
 import AuthSubmitButton from "@/src/components/auth-submit-button";
 import { FormMessage, Message } from "@/src/components/form-message";
+import { createSupabaseClient } from "@/src/utils/supabase/server";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function SignIn(props: {
   searchParams: Promise<Message>;
 }) {
   const searchParams = await props.searchParams;
+  const client = await createSupabaseClient();
+  const {
+    data: { user },
+    error,
+  } = await client.auth.getUser();
+
+  if (user) {
+    redirect("/dashboard");
+  }
 
   return (
     <form

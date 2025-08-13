@@ -1,11 +1,17 @@
 import Link from "next/link";
 import { createSupabaseClient } from "@/src/utils/supabase/server";
+import AuthPageSignOutButton from "./auth-sign-out-button";
 
 export default async function Header() {
   const client = await createSupabaseClient();
   const {
     data: { user },
   } = await client.auth.getUser();
+
+  const handleSignout = async () => {
+    // defaults to the global scope
+    await client.auth.signOut();
+  };
 
   return (
     <nav className="border-b w-full h-16 shrink-0 flex items-center">
@@ -14,7 +20,7 @@ export default async function Header() {
           PlotPilot
         </Link>
         <div className="flex items-center gap-2">
-          {user == null && (
+          {user == null ? (
             <>
               <button>
                 <Link href="/sign-in">Sign In</Link>
@@ -23,6 +29,8 @@ export default async function Header() {
                 <Link href="/sign-up">Sign Up</Link>
               </button>
             </>
+          ) : (
+            <AuthPageSignOutButton />
           )}
         </div>
       </div>

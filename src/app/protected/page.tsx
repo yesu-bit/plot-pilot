@@ -1,16 +1,16 @@
 import { createSupabaseClient } from "@/src/utils/supabase/server";
 import AuthPageSignOutButton from "@/src/components/auth-sign-out-button";
+import { redirect } from "next/navigation";
 
 export default async function ProtectedPage() {
   const client = await createSupabaseClient();
   const {
     data: { user },
+    error,
   } = await client.auth.getUser();
 
-  if (!user) {
-    return (
-      <div>There was an error loading your account. Please try again.</div>
-    );
+  if (error || !user) {
+    redirect("/auth/signin");
   }
 
   return (
