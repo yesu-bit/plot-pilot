@@ -21,7 +21,7 @@ export default function SignUp() {
     setError("");
 
     try {
-      const { data, error } = await supabase.auth.signUp({
+      const { data, error: signUpError } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -31,8 +31,8 @@ export default function SignUp() {
         },
       });
 
-      if (error) {
-        setError(error.message);
+      if (signUpError) {
+        setError(signUpError.message);
       } else {
         setShowConfirmation(true);
       }

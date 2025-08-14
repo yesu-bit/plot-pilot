@@ -38,11 +38,35 @@ export async function GET(request: NextRequest) {
     });
 
     if (!error) {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (user) {
+        const { error: insertError } = await supabase.from("users").upsert(
+          {
+            user_id: user.id,
+            name:
+              user.user_metadata?.full_name ||
+              user.email?.split("@")[0] ||
+              "User",
+            email: user.email,
+            created_at: new Date().toISOString(),
+          },
+          {
+            onConflict: "user_id",
+          }
+        );
+
+        if (insertError) {
+          console.error("Error inserting user data:", insertError);
+        }
+      }
+
       const redirectResponse = NextResponse.redirect(
         new URL(next, request.url)
       );
 
-      // Copy all cookies from the response to the redirect response
       response.cookies.getAll().forEach((cookie) => {
         redirectResponse.cookies.set(cookie);
       });
