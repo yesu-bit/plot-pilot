@@ -1,6 +1,10 @@
+import HomeView from "../sections/home/home-view";
+
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center px-4 py-16"></div>
+    <div className="flex flex-col items-center bg-blue-50">
+      <HomeView />
+    </div>
   );
 }
 
