@@ -16,6 +16,10 @@ export default async function ProtectedSidebar() {
           label: "My Stories",
           href: "/stories",
         },
+        {
+          label: "My Characters",
+          href: "/characters",
+        },
       ]}
     />
   );

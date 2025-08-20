@@ -1,17 +1,13 @@
 import Link from "next/link";
 import { createSupabaseClient } from "@/src/utils/supabase/server";
 import AuthPageSignOutButton from "./auth-sign-out-button";
+import { CircleUserRound } from "lucide-react";
 
 export default async function Header() {
   const client = await createSupabaseClient();
   const {
     data: { user },
   } = await client.auth.getUser();
-
-  const handleSignout = async () => {
-    // defaults to the global scope
-    await client.auth.signOut();
-  };
 
   return (
     <nav className="border-b w-full h-16 shrink-0 flex items-center">
@@ -30,7 +26,12 @@ export default async function Header() {
               </button>
             </>
           ) : (
-            <AuthPageSignOutButton />
+            <div className="flex items-center gap-4">
+              <AuthPageSignOutButton />
+              <Link href={"/dashboard"}>
+                <CircleUserRound size={30} className="text-slate-500" />
+              </Link>
+            </div>
           )}
         </div>
       </div>
