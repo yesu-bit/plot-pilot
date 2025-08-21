@@ -1,24 +1,25 @@
-import InPageSidebar from "@/src/components/in-page-sidebar";
+import InPageSidebar from "./in-page-sidebar";
+import { BookOpenText, LayoutDashboard, UsersRound } from "lucide-react";
 
 export default async function ProtectedSidebar() {
-  // const client = await createUpdateClient();
-  // const { data } = await client.entitlements.check("premium");
-
   return (
     <InPageSidebar
       basePath="/dashboard"
       items={[
         {
-          label: "General",
+          label: "Dashboard",
           href: "/",
+          icon: <LayoutDashboard size={18} />,
         },
         {
           label: "My Stories",
           href: "/stories",
+          icon: <BookOpenText size={18} />,
         },
         {
           label: "My Characters",
           href: "/characters",
+          icon: <UsersRound size={18} />,
         },
       ]}
     />

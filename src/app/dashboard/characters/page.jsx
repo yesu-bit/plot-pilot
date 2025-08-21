@@ -13,5 +13,5 @@ export default async function MyCharactersPage() {
     .select("*")
     .eq("user_id", user.id);
 
-  return <MyCharactersView characters={characters} user={user} />;
+  return <MyCharactersView initialCharacters={characters} user={user} />;
 }

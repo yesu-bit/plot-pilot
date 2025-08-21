@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Component } from "react";
 
 type Item = {
   label: string;
   href: string;
   disabled?: boolean;
+  icon?: React.ReactNode;
 };
 
 export default function InPageSidebar({
@@ -19,10 +21,10 @@ export default function InPageSidebar({
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col justify-between min-w-[250px] mr-[8px] h-full">
-      <div className="flex flex-col gap-[4px] px-2">
+    <div className="flex flex-col justify-between min-w-[250px] mr-[8px] h-full px-3 py-8 border-r-[1px]">
+      <div className="flex flex-col gap-4 px-2">
         {items.map((item, index) => {
-          const { label, href, disabled = false } = item;
+          const { label, href, disabled = false, icon } = item;
           const fullHref = `${basePath}${href}`;
           const isActive =
             href === "/"
@@ -35,6 +37,7 @@ export default function InPageSidebar({
               label={label}
               isActive={isActive}
               isDisabled={disabled}
+              icon={icon}
             />
           );
         })}
@@ -48,11 +51,13 @@ function SidebarLink({
   label,
   isActive,
   isDisabled,
+  icon,
 }: {
   href: string;
   label: string;
   isActive: boolean;
   isDisabled: boolean;
+  icon?: React.ReactNode;
 }) {
   return (
     <>
@@ -72,7 +77,8 @@ function SidebarLink({
         // )}
       >
         <div className="flex items-center gap-2">
-          <div className="leading-none">{label}</div>
+          {icon}
+          <div className="leading-none text-md font-medium">{label}</div>
         </div>
       </Link>
     </>

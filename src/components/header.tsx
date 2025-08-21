@@ -10,7 +10,7 @@ export default async function Header() {
   } = await client.auth.getUser();
 
   return (
-    <nav className="border-b w-full h-16 shrink-0 flex items-center">
+    <nav className="border-b w-full h-14 shrink-0 flex items-center">
       <div className="px-6 w-full flex items-center justify-between mx-auto">
         <Link href="/" className="text-md font-medium">
           PlotPilot
