@@ -4,6 +4,7 @@ import { CharacterForm } from "@/src/components/character-form";
 import Button from "@/src/components/ui/button";
 import { Character } from "@/src/types/character";
 import { createSupabaseClient } from "@/src/utils/supabase/client";
+import { Pen, Plus, Trash } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 export default function MyCharactersView({
@@ -98,28 +99,41 @@ export default function MyCharactersView({
 
   return (
     <div>
-      <h4>Characters</h4>
-      <Button variant="contained" onClick={handleOpenForm}>
-        Create Character
-      </Button>
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h4 className="text-2xl font-bold">Characters</h4>
+          <p className="text-gray-400 text-md">
+            Manage your creative characters
+          </p>
+        </div>
+        <Button variant="contained" onClick={handleOpenForm}>
+          <Plus size={18} />
+          Create Character
+        </Button>
+      </div>
       <div>{characters?.length === 0 && <p>No Characters created</p>}</div>
       <div>
         {characters?.map((character) => (
-          <div key={character?.id}>
-            {/* <h3>{character?.title}</h3> */}
-            <p>{character?.name || ""}</p>
-            <Button
-              variant="outlined"
-              onClick={() => handleDeleteCharacter(character)}
-            >
-              del
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={() => handleOpenEdit(character)}
-            >
-              edit
-            </Button>
+          <div key={character?.id} className="flex items-center gap-6">
+            <p className="font-medium text-md capitalize">
+              {character?.name || ""}
+            </p>
+            <div className="flex items-center gap-2">
+              <Button
+                size="small"
+                variant="outlined"
+                onClick={() => handleOpenEdit(character)}
+              >
+                <Pen size={15} />
+              </Button>
+              <Button
+                size="small"
+                variant="outlined"
+                onClick={() => handleDeleteCharacter(character)}
+              >
+                <Trash size={15} />
+              </Button>
+            </div>
           </div>
         ))}
       </div>

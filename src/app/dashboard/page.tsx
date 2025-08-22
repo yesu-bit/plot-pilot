@@ -1,3 +1,4 @@
+import DashboardView from "@/src/sections/dashboard/dashboard-view";
 import { createSupabaseClient } from "@/src/utils/supabase/server";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -12,11 +13,10 @@ export default async function dashboardPage() {
   if (error || !user) {
     redirect("/sign-in");
   }
+  const { data } = await client
+    .from("users")
+    .select("*")
+    .eq("user_id", user.id);
 
-  return (
-    <div>
-      <h4>Dashboard</h4>
-      <p>{user?.email}</p>
-    </div>
-  );
+  return <DashboardView userData={data?.[0] || null} />;
 }
