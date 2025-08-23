@@ -28,7 +28,7 @@ export default function Input({
       type={type}
       value={value}
       onChange={(e) => onChange(e)}
-      className={`px-2 border border-slate-300 rounded-[6px] py-1.5 text-[15px] ${className}`}
+      className={`w-full px-2 border border-slate-300 rounded-[6px] py-1.5 text-[15px] ${className}`}
       {...props}
     />
   );

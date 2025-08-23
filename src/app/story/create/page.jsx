@@ -57,7 +57,7 @@ export default function StoryCreatePage() {
   };
 
   return (
-    <div>
+    <div className="bg-white h-screen flex p-8 gap-6">
       {/* <Sidebar /> */}
       <Editor content={content} setContent={setContent} />
       <RightPanel onSave={handleSave} />

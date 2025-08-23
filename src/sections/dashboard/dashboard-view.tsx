@@ -51,7 +51,7 @@ export default function DashboardView({ userData }: DashboardViewProps) {
 
   return (
     <div>
-      <div className="flex gap-6">
+      <div className="flex flex-col md:flex-row gap-6">
         <Toaster />
         <div className="flex justify-between gap-2 flex-4/6 border-[1px] border-slate-300 rounded-md p-4 px-8 bg-gradient-to-r from-blue-100 to-white">
           <div className="flex flex-col gap-2 justify-center">

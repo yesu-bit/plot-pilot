@@ -1,13 +1,13 @@
 import InPageSidebar from "./in-page-sidebar";
 import { BookOpenText, LayoutDashboard, UsersRound } from "lucide-react";
 
-export default async function ProtectedSidebar() {
+export default function ProtectedSidebar() {
   return (
     <InPageSidebar
       basePath="/dashboard"
       items={[
         {
-          label: "Dashboard",
+          label: "Overview",
           href: "/",
           icon: <LayoutDashboard size={18} />,
         },

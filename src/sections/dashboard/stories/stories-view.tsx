@@ -42,7 +42,7 @@ export default function StoriesView({ stories }: { stories: Story[] }) {
   return (
     <div>
       <Toaster />
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center gap-4 justify-between">
         <div>
           <h4 className="text-2xl font-bold">Stories</h4>
           <p className="text-gray-400 text-md">
@@ -51,7 +51,7 @@ export default function StoriesView({ stories }: { stories: Story[] }) {
         </div>
         <Link
           href={"/story/create"}
-          className="flex items-center gap-3 px-3 py-1.5 text-[16px] rounded-[5px] bg-slate-900 text-white"
+          className="flex items-center justify-center gap-3 px-3 py-1.5 text-[16px] rounded-[5px] bg-slate-900 text-white"
         >
           <Plus size={18} />
           Create Story
@@ -61,7 +61,7 @@ export default function StoriesView({ stories }: { stories: Story[] }) {
         {storiesList?.map((story: Story) => (
           <div
             key={story.id}
-            className="flex items-center justify-between w-full border-[1px] p-4 border-slate-200 rounded-md bg-white shadow-sm"
+            className="flex flex-col md:flex-row md:items-center gap-4 justify-between w-full border-[1px] p-4 border-slate-200 rounded-md bg-white shadow-sm"
           >
             <h3 className="font-medium text-md capitalize">{story?.title}</h3>
             <div className="flex items-center gap-4">

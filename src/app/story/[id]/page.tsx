@@ -128,11 +128,6 @@ export default async function StoryPage({ params }: { params: Params }) {
             <span>
               Created: {new Date(story.created_at).toLocaleDateString()}
             </span>
-            {/* {story.updated_at !== story.created_at && (
-              <span className="ml-4">
-                Updated: {new Date(story.updated_at).toLocaleDateString()}
-              </span>
-            )} */}
           </div>
         </header>
 

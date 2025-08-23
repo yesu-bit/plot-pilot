@@ -73,15 +73,15 @@ export function TiptapEditor({
     children: React.ReactNode;
     disabled?: boolean;
   }) => (
-    <button
-      //   variant={isActive ? "default" : "ghost"}
-      //   size="sm"
+    <Button
+      variant={isActive ? "contained" : "outlined"}
+      size="normal"
       onClick={onClick}
       disabled={disabled}
-      className="h-8 w-8 p-0"
+      className="h-8 w-8 p-0 text-md"
     >
       {children}
-    </button>
+    </Button>
   );
 
   return (
@@ -177,7 +177,7 @@ export function TiptapEditor({
       </div>
 
       {/* Editor Content */}
-      <EditorContent editor={editor} className="bg-background min-h-[200px]" />
+      <EditorContent editor={editor} className="bg-white min-h-[500px] mb-6" />
     </div>
   );
 }

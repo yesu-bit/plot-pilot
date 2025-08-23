@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import { X, User } from "lucide-react";
 import Modal from "./ui/modal";
 import { Character } from "../types/character";
+import Label from "./ui/label";
+import Input from "./ui/input";
+import Button from "./ui/button";
 
 interface CharacterFormProps {
   character?: Character | null;
@@ -76,31 +79,32 @@ export function CharacterForm({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <div>
-        <h5>{character ? "Edit Character" : "Create New Character"}</h5>
-        <p>
-          {character
-            ? "Update your character details"
-            : "Bring a new character to life"}
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      title={character ? "Edit Character" : "Create New Character"}
+      description={
+        character
+          ? "Update your character details"
+          : "Bring a new character to life"
+      }
+    >
+      <div className="">
+        <div className="">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Character Image */}
-            <div className="flex items-center gap-4">
+            {/* <div className="flex items-center gap-4">
               <div className="w-20 h-20">
                 <User className="w-10 h-10" />
               </div>
-            </div>
+            </div> */}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="">
               <div className="space-y-2">
-                <label htmlFor="name">Name *</label>
-                <input
+                <Label htmlFor="name" text="Name *" />
+                <Input
                   id="name"
+                  name="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Character name"
@@ -110,33 +114,39 @@ export function CharacterForm({
             </div>
 
             <div className="space-y-2">
+              <Label text="Description" />
               <textarea
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Brief description of the character..."
                 rows={2}
+                className="w-full border border-border rounded-[5px] p-3"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="personality">Personality Traits</label>
+              <Label htmlFor="personality" text="Personality Traits" />
               <div className="flex gap-2">
-                <input
+                <Input
+                  name="personality"
                   id="personality"
                   value={personalityInput}
                   onChange={(e) => setPersonalityInput(e.target.value)}
                   onKeyDown={handlePersonalityKeyDown}
                   placeholder="Add personality traits (press Enter)"
                 />
-                <button type="button" onClick={addPersonalityTrait}>
+                <Button variant="outlined" onClick={addPersonalityTrait}>
                   Add
-                </button>
+                </Button>
               </div>
               {personality.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-2">
                   {personality.map((trait) => (
-                    <div key={trait} className="flex items-center gap-1">
+                    <div
+                      key={trait}
+                      className="text-sm flex items-center justify-between gap-1 border border-border px-2 rounded-xl"
+                    >
                       {trait}
                       <X
                         className="w-3 h-3 cursor-pointer"
@@ -148,13 +158,13 @@ export function CharacterForm({
               )}
             </div>
 
-            <div className="flex justify-end gap-3">
-              <button type="button" onClick={onClose}>
+            <div className="flex items-center justify-between border-t border-border pt-4">
+              <Button variant="outlined" onClick={onClose}>
                 Cancel
-              </button>
-              <button type="submit">
+              </Button>
+              <Button variant="contained" type="submit">
                 {character ? "Update Character" : "Create Character"}
-              </button>
+              </Button>
             </div>
           </form>
         </div>

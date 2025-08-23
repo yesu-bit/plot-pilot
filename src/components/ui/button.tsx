@@ -43,6 +43,8 @@ const Button: React.FC<ButtonProps> = ({
       sizeClasses = "px-6 py-3 text-base sm:text-lg";
       break;
     case "normal":
+      sizeClasses = "px-4 py-2 text-sm";
+      break;
     default:
       sizeClasses = "px-4 py-2 text-sm";
       break;

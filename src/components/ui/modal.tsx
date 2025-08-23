@@ -22,7 +22,7 @@ export default function Modal({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md h-full max-h-11/12 mx-auto bg-white rounded-xl shadow-xl overflow-auto transform transition-all sm:p-6 p-4 custom-scrollbar"
+        className="relative w-full max-w-md h-auto max-h-11/12 mx-auto bg-white rounded-xl shadow-xl overflow-auto transform transition-all sm:p-6 p-4 custom-scrollbar"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between pb-4 border-b border-gray-200">

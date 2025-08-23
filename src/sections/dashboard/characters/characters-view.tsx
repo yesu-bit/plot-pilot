@@ -99,7 +99,7 @@ export default function MyCharactersView({
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between mb-8">
         <div>
           <h4 className="text-2xl font-bold">Characters</h4>
           <p className="text-gray-400 text-md">
@@ -114,7 +114,10 @@ export default function MyCharactersView({
       <div>{characters?.length === 0 && <p>No Characters created</p>}</div>
       <div>
         {characters?.map((character) => (
-          <div key={character?.id} className="flex items-center gap-6">
+          <div
+            key={character?.id}
+            className="flex items-center gap-6 justify-between border border-border py-2 px-3 rounded-md"
+          >
             <p className="font-medium text-md capitalize">
               {character?.name || ""}
             </p>
