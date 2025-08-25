@@ -31,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
       variantClasses = outlinedStyles;
       break;
     default:
-      variantClasses = containedStyles;
+      variantClasses = baseStyles;
   }
 
   let sizeClasses;

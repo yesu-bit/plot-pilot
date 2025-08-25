@@ -11,7 +11,7 @@ export default function Editor({
   setContent: (content: string) => void;
 }) {
   return (
-    <div className="flex-9/12">
+    <div className="px-8">
       <TiptapEditor content={content} onChange={setContent} className="mb-4" />
     </div>
   );

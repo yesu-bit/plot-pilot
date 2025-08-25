@@ -73,15 +73,18 @@ export function TiptapEditor({
     children: React.ReactNode;
     disabled?: boolean;
   }) => (
-    <Button
-      variant={isActive ? "contained" : "outlined"}
+    <button
       size="normal"
       onClick={onClick}
       disabled={disabled}
-      className="h-8 w-8 p-0 text-md"
+      style={{
+        color: isActive ? "white" : "black",
+        background: isActive ? "black" : "white",
+      }}
+      className="flex items-center justify-center rounded-xs h-8 w-8 p-0 text-md"
     >
       {children}
-    </Button>
+    </button>
   );
 
   return (

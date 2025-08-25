@@ -9,6 +9,7 @@ export default function StoryCreatePage() {
   const [content, setContent] = useState(
     "<h1>Welcome to Tiptap!</h1><p>This is a basic rich text editor built with Tiptap. Try formatting some text:</p><ul><li>Make text <strong>bold</strong> or <em>italic</em></li><li>Create lists and headings</li><li>Add blockquotes and code</li></ul><blockquote><p>Tiptap is a headless wrapper around ProseMirror – a toolkit for building rich text WYSIWYG editors.</p></blockquote>"
   );
+  const [title, setTitle] = useState("Untitled Story");
   const [isSaved, setIsSaved] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
@@ -37,7 +38,7 @@ export default function StoryCreatePage() {
 
       const { data, error } = await supabase.from("stories").insert({
         user_id: user.id,
-        title: "draft 1",
+        title: title,
         content: content,
       });
 
@@ -57,10 +58,10 @@ export default function StoryCreatePage() {
   };
 
   return (
-    <div className="bg-white h-screen flex p-8 gap-6">
+    <div className="bg-white h-screen pb-8 gap-6">
       {/* <Sidebar /> */}
+      <RightPanel onSave={handleSave} title={title} setTitle={setTitle} />
       <Editor content={content} setContent={setContent} />
-      <RightPanel onSave={handleSave} />
     </div>
   );
 }
